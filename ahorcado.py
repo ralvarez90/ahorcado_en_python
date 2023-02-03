@@ -15,8 +15,11 @@ entradas = []
 palabra_escondida = ['_' for c in PALABRA_A_ADIVINAR]
 
 # diccionario de elementos i:c donde i es el índice de cada caracter c
-# en PALABRA_A_ADIVINAR
+# en PALABRA_A_ADIVINAR:
+# {0:'e', 1:'l', 2:'e', 3:'f', 4:'a', 5:'n', 6:'t', 7:'e'}
 dict_indice_letra = {i: PALABRA_A_ADIVINAR[i] for i in range(len(PALABRA_A_ADIVINAR))}
+
+
 
 # tupla que almacena los dibujitos, los strikes serán los índices
 # de esta tupla, si aumenta el strike, muestra el siguiente muñequito
