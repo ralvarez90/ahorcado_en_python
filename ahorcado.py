@@ -3,7 +3,11 @@
 
 # palabra a adivinar
 PALABRA_A_ADIVINAR = 'elefante'
+
+# almacena numero de entradas erroneas
 strikes = 0
+
+# almacena entradas conforme se van ingresando
 entradas = []
 
 # lista que representa la palabra escondida, inicialmente es
@@ -12,8 +16,7 @@ palabra_escondida = ['_' for c in PALABRA_A_ADIVINAR]
 
 # diccionario de elementos i:c donde i es el índice de cada caracter c
 # en PALABRA_A_ADIVINAR
-dict_indice_letra = {i: PALABRA_A_ADIVINAR[i]
-                     for i in range(len(PALABRA_A_ADIVINAR))}
+dict_indice_letra = {i: PALABRA_A_ADIVINAR[i] for i in range(len(PALABRA_A_ADIVINAR))}
 
 # tupla que almacena los dibujitos, los strikes serán los índices
 # de esta tupla, si aumenta el strike, muestra el siguiente muñequito
@@ -103,7 +106,7 @@ dibujitos = (
 # repite mientras que el número de strikes sea menor a los
 # dibujitos que tengamos disponibles
 while strikes < len(dibujitos):
-    
+
     # imprime un salto de linea
     print()
 
@@ -111,19 +114,22 @@ while strikes < len(dibujitos):
     print(dibujitos[strikes])
     print(palabra_escondida)
 
+    # si se llegan a 7 strikes, se rompe el bucle
     if strikes == 7:
         break
 
     # entrada de datos
-    entrada = input(">>> ")
+    entrada = input("Ingrese letra: ")
+    
+    # si entrada no está en, se aumenta el strike
     if entrada not in PALABRA_A_ADIVINAR:
         strikes += 1
     else:
-        indices_a_cambiar = [i for i in dict_indice_letra.keys(
-        ) if entrada == dict_indice_letra.get(i)]
+        indices_a_cambiar = [i for i in dict_indice_letra.keys() if entrada == dict_indice_letra.get(i)]
         for i in indices_a_cambiar:
             palabra_escondida[i] = entrada
 
+    # verifica si lo que se ingresó no se había ingreado previamente
     if entrada not in entradas:
         entradas.append(entrada)
     else:
@@ -134,7 +140,7 @@ while strikes < len(dibujitos):
     if '_' not in palabra_escondida:
         print('GANASTE!')
         break
-    
 
 
-_ = input('\nPresiona una tecla para continuar. . . ')
+# fin del programa
+input('\nPresiona una tecla para continuar. . . ')
